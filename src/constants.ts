@@ -6,4 +6,12 @@ export const RPC_URLS = {
   42: `https://kovan.infura.io/v3/${process.env.REACT_APP_INFURA_ID}`,
 };
 
+export const CHAIN_NAMES = {
+  mainnet: 1,
+  ropsten: 3,
+  rinkeby: 4,
+  goerli: 5,
+  kovan: 42,
+};
+
 export const POLLING_INTERVAL = 5000;

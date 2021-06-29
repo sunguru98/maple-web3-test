@@ -1,26 +1,29 @@
 import { useWeb3React } from '@web3-react/core';
 import { NavBar } from './components/NavBar';
 import { Alert } from 'antd';
-import { getErrorMessage } from '.';
-import { useAccountBalance } from './hooks/useAccountBalance';
-import { useEffect } from 'react';
+import { getErrorMessage } from './index';
+import { Banner } from './components/Banner';
+import { useCachedProvider } from './hooks/useCachedProvider';
+import { Wallet } from './components/Wallet';
 
 function App() {
+  useCachedProvider();
   const { active, error } = useWeb3React();
-
-  const { balance, getBalance } = useAccountBalance();
 
   return (
     <div className='App'>
       <NavBar />
-      {active && error && (
+      {error && (
         <Alert
           message='Error'
           description={getErrorMessage(error)}
           type='error'
           showIcon
+          closable
         />
       )}
+      <Banner />
+      {active && <Wallet />}
     </div>
   );
 }
